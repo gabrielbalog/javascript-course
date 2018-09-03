@@ -5,7 +5,7 @@
 // <= - less or equal to operator
 // >= - greater or equal to operator
 
-// let temp = 31
+let temp = 31
 // let isFreezing = temp === 31 // -> true
 // let isFreezing = temp !== 31 // -> false
 // let isFreezing = temp < 31 // -> false
