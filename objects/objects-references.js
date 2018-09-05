@@ -4,16 +4,27 @@ let myAccount = {
     income: 0
 }
 
-let otherAccount = myAccount
-otherAccount.income = 1000 // Atualizando o valor de myAccount
-otherAccount = {} // Nao fara nada
-
 let addExpense = function(account, amount) {
-    // account = {} // nao funciona pois so e possivel modificar uma property
     account.expenses = account.expenses + amount
-    console.log(account)
 }
 
-addExpense(myAccount, 2.50)
+let addIncome = function(account, income) {
+    account.income = account.income + income
+}
 
-console.log(myAccount)
+let resetAccount = function(account) {
+    account.expenses = 0
+    account.income = 0
+}
+
+let getAccountSummary = function(account) {
+    let balance = account.income - account.expenses
+    return `Account for ${account.name} has $${balance}. $${account.income} in income. $${account.expenses} in expenses.`
+}
+
+addIncome(myAccount, 1000)
+addExpense(myAccount, 500)
+addExpense(myAccount, 400)
+console.log(getAccountSummary(myAccount))
+resetAccount(myAccount)
+console.log(getAccountSummary(myAccount))
