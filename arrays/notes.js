@@ -12,6 +12,11 @@ const notes = ['Note 1', 'Note 2', 'Note 3']
 
 notes[1] = 'This is the new second item' // Atualiza o segundo item com a string
 
+notes.forEach(function(item, index) {
+    console.log(index)
+    console.log(item)
+})
+
 console.log(notes)
 console.log(notes.length)
 console.log(notes[0])
