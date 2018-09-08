@@ -3,10 +3,10 @@ const todos = [{
     completed: false
 },{
     text: 'Lavar roupa',
-    completed: false
+    completed: true
 },{
     text: 'Dobrar a roupa',
-    completed: false
+    completed: true
 },{
     text: 'Passar pano',
     completed: false
@@ -24,5 +24,13 @@ const deleteTodo = function(todos, todoText) {
     }
 }
 
-deleteTodo(todos, 'passar pano')
-console.log(todos)
+const getThingsToDo = function(todos) {
+    return todos.filter(function(todo, index) {
+        return !todo.completed
+    })
+}
+
+console.log(getThingsToDo(todos))
+
+// deleteTodo(todos, 'passar pano')
+// console.log(todos)
