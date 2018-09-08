@@ -1,11 +1,28 @@
-const todos = ['Lavar louca', 'Lavar roupa', 'Dobrar a roupa', 'Passar pano', 'Molhar o cacto']
+const todos = [{
+    text: 'Lavar louca',
+    completed: false
+},{
+    text: 'Lavar roupa',
+    completed: false
+},{
+    text: 'Dobrar a roupa',
+    completed: false
+},{
+    text: 'Passar pano',
+    completed: false
+},{
+    text: 'Molhar o cacto',
+    completed: false
+}]
 
-todos.splice(2,1) // remove 3 item
-todos.push('Guardar a louca') // adiciona ao final do array
-todos.shift() // remove primeiro item
+const deleteTodo = function(todos, todoText) {
+    const index = todos.findIndex(function(todo) {
+        return todo.text.toLowerCase() === todoText.toLowerCase()
+    })
+    if (index > -1) {
+        todos.splice(index, 1)
+    }
+}
 
-console.log(`You have ${todos.length} todos!`)
-
-todos.forEach(function(todo, index) {
-    console.log(`${index + 1}. ${todo}`)
-})
+deleteTodo(todos, 'passar pano')
+console.log(todos)
