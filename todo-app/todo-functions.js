@@ -22,6 +22,16 @@ const removeTodo = function(id) {
     }
 }
 
+const toogleTodo = function(id) {
+    const todo = todos.find(function(todo) {
+        return todo.id === id
+    })
+
+    if (todo !== undefined) {
+        todo.completed = !todo.completed
+    }
+}
+
 const renderTodos = function(todos, filters) {
     const todosFiltered = todos.filter(function(todo) {
         if (!filters.hideCompleted) {
@@ -52,6 +62,12 @@ const generateTodoDOM = function(todo) {
     const button = document.createElement('button')
 
     checkbox.setAttribute('type','checkbox')
+    checkbox.checked = todo.completed
+    checkbox.addEventListener('change', function() {
+        toogleTodo(todo.id)
+        saveTodos(todos)
+        renderTodos(todos, filters)
+    })
     todoEl.appendChild(checkbox)
     
     todoText.textContent = todo.text
