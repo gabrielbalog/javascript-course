@@ -19,7 +19,6 @@ const filters = {
     searchText: '',
 }
 
-
 renderTodos = function(todos, filters) {
     const todosFiltered = todos.filter(function(todo) {
         return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
@@ -44,15 +43,19 @@ renderTodos = function(todos, filters) {
 
 renderTodos(todos, filters)
 
-document.querySelector('#add-todo').addEventListener('click', function(e) {
-    console.log('Add a new todo...')
-})
-
-document.querySelector('#new-todo-text').addEventListener('input', function(e) {
-    console.log(e.target.value)
-})
-
 document.querySelector('#search-todo-text').addEventListener('input', function(e) {
     filters.searchText = e.target.value
+    renderTodos(todos, filters)
+})
+
+document.querySelector('#todo-form').addEventListener('submit', function(e) {
+    e.preventDefault()
+
+    todos.push({
+        text: e.target.elements.todoText.value,
+        completed: false
+    })
+
+    e.target.elements.todoText.value = ''
     renderTodos(todos, filters)
 })
