@@ -17,11 +17,16 @@ const todos = [{
 
 const filters = {
     searchText: '',
+    hideCompleted: false
 }
 
 renderTodos = function(todos, filters) {
     const todosFiltered = todos.filter(function(todo) {
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        if (!filters.hideCompleted) {
+            return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        } else {
+            return todo.text.toLowerCase().includes(filters.searchText.toLowerCase()) && !todo.completed
+        }
     })
 
     document.querySelector('#todos').innerHTML = ''
@@ -57,5 +62,10 @@ document.querySelector('#todo-form').addEventListener('submit', function(e) {
     })
 
     e.target.elements.todoText.value = ''
+    renderTodos(todos, filters)
+})
+
+document.querySelector('#hide-completed').addEventListener('change', function(e) {
+    filters.hideCompleted = e.target.checked
     renderTodos(todos, filters)
 })
