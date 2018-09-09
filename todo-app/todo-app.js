@@ -1,23 +1,14 @@
-const todos = [{
-    text: 'Lavar louca',
-    completed: false
-},{
-    text: 'Lavar roupa',
-    completed: true
-},{
-    text: 'Dobrar a roupa',
-    completed: true
-},{
-    text: 'Passar pano',
-    completed: false
-},{
-    text: 'Molhar o cacto',
-    completed: false
-}]
+let todos = []
 
 const filters = {
     searchText: '',
     hideCompleted: false
+}
+
+const todosJSON = localStorage.getItem('todos')
+
+if (todosJSON !== null) {
+    todos = JSON.parse(todosJSON)
 }
 
 renderTodos = function(todos, filters) {
@@ -62,6 +53,7 @@ document.querySelector('#todo-form').addEventListener('submit', function(e) {
     })
 
     e.target.elements.todoText.value = ''
+    localStorage.setItem('todos', JSON.stringify(todos))
     renderTodos(todos, filters)
 })
 
