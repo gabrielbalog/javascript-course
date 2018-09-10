@@ -8,10 +8,13 @@ renderNotes(notes, filters)
 
 document.querySelector('#create-note').addEventListener('click', function(e) {
     const id = uuidv4()
+    const now = moment().valueOf()
     notes.push({
         id: id,
         title: '',
-        body: ''
+        body: '',
+        createdAt: now,
+        updatedAt: now
     })
     saveNotes(notes)
     location.assign(`/edit.html#${id}`)
@@ -41,7 +44,3 @@ window.addEventListener('storage', function(e) {
 // const nowTimestamp = now.valueOf()
 // console.log(nowTimestamp)
 // console.log(moment(nowTimestamp).toString())
-
-const birthday = moment()
-birthday.year(1997).month(4).date(2)
-console.log(birthday.format('MMM D, YYYY'))
