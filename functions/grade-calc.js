@@ -1,4 +1,8 @@
 const gradeCalc = function(studentScore, possibleScore) {
+
+    if (typeof studentScore !== 'number' || typeof possibleScore !== 'number') {
+        throw Error('Please provide number as argument!')
+    }
     score = (studentScore / possibleScore) * 100
     let letterGrade = ''
 
@@ -17,8 +21,12 @@ const gradeCalc = function(studentScore, possibleScore) {
     return `You gote a ${letterGrade} (${score}%)!`
 }
 
-const gradeOne = gradeCalc(15, 20)
-const gradeTwo = gradeCalc(5, 20)
-
-console.log(gradeOne)
-console.log(gradeTwo)
+try {
+    const gradeOne = gradeCalc('a', 20)
+    const gradeTwo = gradeCalc(5, 20)
+    
+    console.log(gradeOne)
+    console.log(gradeTwo)
+} catch (e) {
+    console.log(e.message)
+}
