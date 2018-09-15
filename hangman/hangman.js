@@ -5,6 +5,16 @@ const Hangman = function(word, numberOfGuesses) {
     this.status = 'playing'
 }
 
+Hangman.prototype.showMessage = function() {
+    if (this.status === 'playing') {
+        return `Guesses left: ${this.numberOfGuesses}`
+    } else if (this.status === 'failed') {
+        return `Nice try! The word was "${this.word.join('')}".`
+    } else {
+        return 'Great work! You guessed the word.'
+    }
+}
+
 Hangman.prototype.changeStatus = function() {
     const finished = this.word.every((letter) => this.guessedLetters.includes(letter))
 
@@ -36,14 +46,15 @@ Hangman.prototype.makeGuess = function(guess) {
     const isUnique = !this.guessedLetters.includes(guess)
     const isBadGuess = !this.word.includes(guess)
 
-    if (isUnique) {
-        this.guessedLetters.push(guess)
+    if (this.status === 'playing') {
+        if (isUnique) {
+            this.guessedLetters.push(guess)
+        }
+    
+        if (isUnique && isBadGuess) {
+            this.numberOfGuesses--
+        }
+        this.changeStatus()
     }
-
-    if (isUnique && isBadGuess) {
-        this.numberOfGuesses--
-    }
-
-    this.changeStatus()
 
 }
