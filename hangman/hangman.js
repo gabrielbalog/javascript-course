@@ -2,6 +2,19 @@ const Hangman = function(word, numberOfGuesses) {
     this.word = word.toLowerCase().split('')
     this.numberOfGuesses = numberOfGuesses
     this.guessedLetters = []
+    this.status = 'playing'
+}
+
+Hangman.prototype.changeStatus = function() {
+    const finished = this.word.every((letter) => this.guessedLetters.includes(letter))
+
+    if (this.numberOfGuesses === 0) {
+        this.status = 'failed'
+    } else if (finished) {
+        this.status = 'finished'
+    } else {
+        this.status = 'playing'
+    }
 }
 
 Hangman.prototype.getPuzzle = function() {
@@ -19,17 +32,6 @@ Hangman.prototype.getPuzzle = function() {
 }
 
 Hangman.prototype.makeGuess = function(guess) {
-    // const guessedLetter = letter.toLowerCase()
-    // if (typeof guessedLetter === 'string' && guessedLetter.length === 1) {
-    //     if (!this.guessedLetters.includes(guessedLetter)) {
-    //         if (!this.word.includes(guessedLetter)) {
-    //             this.numberOfGuesses -= 1
-    //         }
-    //         this.guessedLetters.push(guessedLetter)
-    //     }
-    // } else {
-    //     throw Error('Value must be caracter and have length of 1')
-    // }
     guess = guess.toLowerCase()
     const isUnique = !this.guessedLetters.includes(guess)
     const isBadGuess = !this.word.includes(guess)
@@ -41,14 +43,7 @@ Hangman.prototype.makeGuess = function(guess) {
     if (isUnique && isBadGuess) {
         this.numberOfGuesses--
     }
+
+    this.changeStatus()
+
 }
-
-const game1 = new Hangman('cat',2)
-console.log(game1.getPuzzle())
-console.log(`Remaining guesses: ${game1.numberOfGuesses}`)
-
-window.addEventListener('keypress', function    (e) {
-    game1.makeGuess(e.key)
-    console.log(game1.getPuzzle())
-    console.log(`Remaining guesses: ${game1.numberOfGuesses}`)
-})
