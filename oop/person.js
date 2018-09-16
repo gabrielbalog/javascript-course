@@ -20,10 +20,34 @@ class Person {
     }
 }
 
-const me = new Person('Gabriel', 'Balog', 21, ['Teaching','Biking'])
-me.setName('Alexis Texas')
+class Employee extends Person {
+    constructor(firstName, lastName, age, position, likes = []) {
+        super(firstName, lastName, age, likes)
+        this.position = position
+    }
+    getBio() {
+        return `${this.firstName} ${this.lastName} is a ${this.position}.`
+    }
+    getYearsLeft() {
+        return 65 - this.age
+    }
+}
+
+class Student extends Person {
+    constructor(firstName, lastName, age, grade, likes = []) {
+        super(firstName, lastName, age, likes)
+        this.grade = grade
+    }
+    getBio() {
+        const result = this.grade >= 70 ? 'passing' : 'failing'
+        return `${this.firstName} is ${result} the class.`
+    }
+    updateGrade(amount) {
+        this.grade += amount
+    }
+}
+
+const me = new Student('Gabriel','Balog', 21, 70, ['Biking'])
 console.log(me.getBio())
-
-const person2 = new Person('Clancey','Truner', 28)
-
-console.log(person2.getBio())
+me.updateGrade(-20)
+console.log(me.getBio())
