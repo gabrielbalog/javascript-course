@@ -7,7 +7,6 @@ const getPuzzle = (callback) => {
             callback(undefined, data.puzzle)
         } else if (e.target.readyState === 4) {
             callback('An error has taken place',undefined)
-            console.log()
         }
     })
 
