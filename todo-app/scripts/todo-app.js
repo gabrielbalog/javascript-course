@@ -16,16 +16,18 @@ document.querySelector('#search-todo-text').addEventListener('input', (e) => {
 
 document.querySelector('#todo-form').addEventListener('submit', (e) => {
     e.preventDefault()
+    const text = e.target.elements.todoText.value.trim()
+    if (text.length > 0) {
+        todos.push({
+            id: uuidv4(),
+            text,
+            completed: false
+        })
+        saveTodos(todos)
+        e.target.elements.todoText.value = ''
+        renderTodos(todos, filters)
+    }
 
-    todos.push({
-        id: uuidv4(),
-        text: e.target.elements.todoText.value,
-        completed: false
-    })
-
-    saveTodos(todos)
-    e.target.elements.todoText.value = ''
-    renderTodos(todos, filters)
 })
 
 document.querySelector('#hide-completed').addEventListener('change', (e) => {
