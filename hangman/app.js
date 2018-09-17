@@ -11,22 +11,28 @@ window.addEventListener('keypress', (e) => {
     guessesEl.textContent = game1.statusMessage
 })
 
-getPuzzle("2").then((puzzle) => {
-    console.log(puzzle)
-}).catch((err) => {
-    console.log(`Error: ${error}`)
-})
+// getPuzzle("2").then((puzzle) => {
+//     console.log(puzzle)
+// }).catch((err) => {
+//     console.log(`Error: ${error}`)
+// })
 
-// getCountry("BR").then((country) => {
+// getCountry("US").then((country) => {
 //     console.log(country.name)
 // }).catch((error) => {
 //     console.log(`Error: ${error}`)
 // })
 
-getLocation().then((location) => {
-    return getCountry(location.country)
-}).then((country) => {
+// getLocation().then((location) => {
+//     return getCountry(location.country)
+// }).then((country) => {
+//     console.log(country.name)
+// }).catch((err) => {
+//     console.log(err)
+// })
+
+getCurrentCountry().then((country) => {
     console.log(country.name)
-}).catch((err) => {
-    console.log(err)
+}).catch((error) => {
+    console.log(error)
 })
