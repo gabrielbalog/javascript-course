@@ -17,11 +17,11 @@ getPuzzle("2").then((puzzle) => {
     console.log(`Error: ${error}`)
 })
 
-// getCountry("BR").then((country) => {
-//     console.log(country)
-// }, (error) => {
-//     console.log(`Error: ${error}`)
-// })
+getCountry("BR").then((country) => {
+    console.log(country.name)
+}).catch((error) => {
+    console.log(`Error: ${error}`)
+})
 
 // fetch('http://puzzle.mead.io/puzzle', {}).then((res) => {
 //     if (res.status === 200) {
