@@ -11,14 +11,24 @@ window.addEventListener('keypress', (e) => {
     guessesEl.textContent = game1.statusMessage
 })
 
-getPuzzle("1").then((puzzle) => {
+getPuzzle("2").then((puzzle) => {
     console.log(puzzle)
-}, (err) => {
+}).catch((err) => {
     console.log(`Error: ${error}`)
 })
 
-getCountry("BR").then((country) => {
-    console.log(country)
-}, (error) => {
-    console.log(`Error: ${error}`)
-})
+// getCountry("BR").then((country) => {
+//     console.log(country)
+// }, (error) => {
+//     console.log(`Error: ${error}`)
+// })
+
+// fetch('http://puzzle.mead.io/puzzle', {}).then((res) => {
+//     if (res.status === 200) {
+//         return res.json()
+//     } else {
+//         throw new Error('Unable to fetch a new puzzle')
+//     }
+// }).then((data) => {
+//     console.log(data.puzzle)
+// }).catch((err) => console.log(err))
