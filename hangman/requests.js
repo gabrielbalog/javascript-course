@@ -21,3 +21,13 @@ const getCountry = (countryCode) => {
             return country.alpha2Code === countryCode
         }))
 }
+
+const getLocation = () => {
+    return fetch('https://ipinfo.io/json?token=94734b55fc81ea').then((response) => {
+        if (response.status === 200) {
+            return response.json()
+        } else {
+            throw new Error('Unable to fetch data')
+        }
+    })
+}
