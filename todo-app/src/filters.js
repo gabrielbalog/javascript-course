@@ -1,15 +1,15 @@
 const filters = {
     searchText: '',
-    hideCompleted: true
+    hideCompleted: false
 }
 
 const getFilters = () => filters
 
-const setFilters = ({ searchText, hideCompleted}) => {
+const setFilters = ({ searchText, hideCompleted }) => {
     if (typeof searchText === 'string') {
         filters.searchText = searchText
     }
-    if (typeof hideCompleted === 'string') {
+    if (typeof hideCompleted === 'boolean') {
         filters.hideCompleted = hideCompleted
     }
 }
