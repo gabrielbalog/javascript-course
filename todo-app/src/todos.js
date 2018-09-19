@@ -46,4 +46,4 @@ const toogleTodo = (id) => {
 
 loadTodos()
 
-export { getTodos, createTodo, removeTodo, toogleTodo }
+export { getTodos, createTodo, removeTodo, toogleTodo, loadTodos }
