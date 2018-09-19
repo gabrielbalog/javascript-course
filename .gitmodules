@@ -1,0 +1,12 @@
+[submodule "javascript-boilterplate"]
+	path = javascript-boilterplate
+	url = https://github.com/gabrielbalog/javascript-boilterplate
+[submodule "javascript-todo-app"]
+	path = javascript-todo-app
+	url = https://github.com/gabrielbalog/javascript-todo-app
+[submodule "javascript-hangman"]
+	path = javascript-hangman
+	url = https://github.com/gabrielbalog/javascript-hangman
+[submodule "javascript-note-app"]
+	path = javascript-note-app
+	url = https://github.com/gabrielbalog/javascript-note-app
