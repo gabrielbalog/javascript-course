@@ -42,7 +42,7 @@ const generateTodoDOM = (todo) => {
     checkbox.setAttribute('type','checkbox')
     checkbox.checked = todo.completed
     checkbox.addEventListener('change', () => {
-        toogleTodo(todo.id)
+        toggleTodo(todo.id)
         renderTodos()
     })
     containerEl.appendChild(checkbox)
