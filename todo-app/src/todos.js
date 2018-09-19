@@ -35,7 +35,7 @@ const removeTodo = (id) => {
     }
 }
 
-const toogleTodo = (id) => {
+const toggleTodo = (id) => {
     const todo = todos.find((todo) => todo.id === id)
 
     if (todo) {
@@ -46,4 +46,4 @@ const toogleTodo = (id) => {
 
 loadTodos()
 
-export { getTodos, createTodo, removeTodo, toogleTodo, loadTodos }
+export { getTodos, createTodo, removeTodo, toggleTodo, loadTodos }
